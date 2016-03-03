@@ -15,8 +15,8 @@ def fetchList(uri, cursor):
     seriesList = list()
     seriesDicAvg = {}
     seriesDicVar = {}
-    seriesDicAvg['name'] = "Average"
-    seriesDicVar['name'] = "Variance"
+    seriesDicAvg['name'] = "Average(ms)"
+    seriesDicVar['name'] = "Variance(ms)"
     seriesDicAvg['data'] = list()
     seriesDicVar['data'] = list()
     cursor.execute(selectQuery(uri))
@@ -41,6 +41,8 @@ def index():
     apiQuestionsDic = fetchList("'/api/question'", cursor)
     apiQuestionDic = fetchList("'/api/question/1'", cursor)
     createQuestionDic = fetchList("'/question/create'", cursor)
+
+    db.close()
     return render_template('index.html', homeDic=homeDic, apiQuestionsDic=apiQuestionsDic, apiQuestionDic=apiQuestionDic, createQuestionDic=createQuestionDic)
 
 if __name__=='__main__':
