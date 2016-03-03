@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>API Monitoring</title>
+    <!-- include application-chart.min.css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tui-chart/dist/chart.min.css') }}" />
+</head>
+<body>
+    <h1>http://oneq.nhnent.com/</h1>
+    <div id="chart-home" class="chart"></div>
+    
+    <h1>http://oneq.nhnent.com/api/question</h1>
+    <div id="chart-apiQuestions" class="chart"></div>
+
+    <h1>http://oneq.nhnent.com/api/question/1</h1>
+    <div id="chart-apiQuestion" class="chart"></div>
+
+    <h1>http://oneq.nhnent.com/question/create</h1>
+    <div id="chart-createQuestion" class="chart"></div>
+    
+
+    <script id="homeDic" type="application/json">
+        {{ homeDic|tojson|safe }}
+    </script>
+    <script id="apiQuestionsDic" type="application/json">
+        {{ apiQuestionsDic|tojson|safe }}
+    </script>
+    <script id="apiQuestionDic" type="application/json">
+        {{ apiQuestionDic|tojson|safe }}
+    </script>
+    <script id="createQuestionDic" type="application/json">
+        {{ createQuestionDic|tojson|safe }}
+    </script>
+    
+
+    <!-- include libraries -->
+    <script src="{{ url_for('static', filename='tui-code-snippet/code-snippet.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='tui-component-effects/effects.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='raphael/raphael-min.js') }}"></script>
+    <!-- include chart.min.js -->
+    <script src="{{ url_for('static', filename='tui-chart/dist/chart.min.js') }}"></script>
+
+    <script>
+        var chartHome = document.getElementById('chart-home'),
+            chartApiQuestions = document.getElementById('chart-apiQuestions'),
+            chartApiQuestion = document.getElementById('chart-apiQuestion'),
+            chartCreateQuestion = document.getElementById('chart-createQuestion'),
+            jsonHome = JSON.parse(document.getElementById('homeDic').innerHTML),
+            jsonApiQuestions = JSON.parse(document.getElementById('apiQuestionsDic').innerHTML),
+            jsonApiQuestion = JSON.parse(document.getElementById('apiQuestionDic').innerHTML),
+            jsonCreateQuestion = JSON.parse(document.getElementById('createQuestionDic').innerHTML);
+
+        tui.chart.lineChart(chartHome, jsonHome);
+        tui.chart.lineChart(chartApiQuestions, jsonApiQuestions);
+        tui.chart.lineChart(chartApiQuestion, jsonApiQuestion);
+        tui.chart.lineChart(chartCreateQuestion, jsonCreateQuestion);
+    </script>
+</body>
+</html>

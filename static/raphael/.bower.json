@@ -1,0 +1,28 @@
+{
+  "name": "raphael",
+  "main": "raphael.js",
+  "devDependencies": {
+    "requirejs": "~2.1.17",
+    "eve": "https://github.com/adobe-webplatform/eve.git#eef80ed"
+  },
+  "ignore": [
+    "**/.*",
+    "*.html",
+    "*.json",
+    "*.markdown",
+    "*.md",
+    "copy.js",
+    "Gruntfile.js",
+    "reference.js"
+  ],
+  "homepage": "https://github.com/nhnent/raphael",
+  "_release": "v2.1.4a",
+  "_resolution": {
+    "type": "tag",
+    "tag": "v2.1.4a",
+    "commit": "51fd764452a87f7355eb5682c8fcbd1d672de707"
+  },
+  "_source": "https://github.com/nhnent/raphael.git",
+  "_target": "v2.1.4a",
+  "_originalSource": "https://github.com/nhnent/raphael.git"
+}

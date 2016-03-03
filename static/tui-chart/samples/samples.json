@@ -1,0 +1,53 @@
+{
+  "sample01-01-bar-chart": {
+    "title": "Bar Chart Sample"
+  },
+  "sample01-02-negative-bar-chart": {
+    "title": "Negative Bar Chart Sample"
+  },
+  "sample01-03-normal-stacked-bar-chart": {
+    "title": "Stacked Bar Chart Sample"
+  },
+  "sample01-04-diverging-bar-chart": {
+    "title": "Diverging Bar Chart Sample"
+  },
+  "sample02-01-column-chart": {
+    "title": "Column Chart Sample"
+  },
+  "sample02-02-negative-column-chart": {
+    "title": "Negative Column Chart Sample"
+  },
+  "sample02-03-percent-stacked-column-chart": {
+    "title": "Percent Stacked Column Chart Sample"
+  },
+  "sample02-04-stacked-diverging-column-chart": {
+    "title": "Diverging Stacked Column Chart Sample"
+  },
+  "sample03-01-line-chart": {
+    "title": "Line Chart Sample"
+  },
+  "sample03-02-spline-line-chart": {
+    "title": "Spline Line Chart Sample"
+  },
+  "sample04-01-combo-chart": {
+    "title": "Combo Chart Sample"
+  },
+  "sample05-01-pie-chart": {
+    "title": "Pie Chart Sample"
+  },
+  "sample05-02-legend-type-center-show-label-pie-chart": {
+    "title": "Center Legend Pie Chart Sample"
+  },
+  "sample05-03-legend-type-outer-show-label-pie-chart": {
+    "title": "Outer Legend Pie Chart Sample"
+  },
+  "sample06-01-area-chart": {
+    "title": "Area Chart Sample"
+  },
+  "sample06-02-stacked-area-chart": {
+    "title": "Stacked Area Chart Sample"
+  },
+  "sample07-01-map-chart": {
+    "title": "Map Chart Sample"
+  }
+}
