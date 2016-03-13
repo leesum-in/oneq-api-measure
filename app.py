@@ -7,7 +7,7 @@ import math
 app = Flask(__name__)
 
 def selectQuery(uri):
-    query = "SELECT sub.atDay as atDay, sub.a as avg, AVG((tb_api_time.elapsed - sub.a)*(tb_api_time.elapsed - sub.a)) as var from tb_api_time, (SELECT atDay, AVG(tb_api_time.elapsed) as a FROM tb_api_time WHERE uri="+uri+" GROUP BY atDay) as sub where tb_api_time.uri="+uri+" and tb_api_time.atDay = sub.atDay GROUP BY sub.atDay LIMIT 0, 10"
+    query = "SELECT *  FROM (SELECT sub.atDay as atDay, sub.a, AVG((tb_api_time.elapsed - sub.a)*(tb_api_time.elapsed - sub.a)) FROM tb_api_time, (SELECT atDay, AVG(tb_api_time.elapsed) as a FROM tb_api_time WHERE uri="+uri+" GROUP BY atDay) as sub where tb_api_time.uri="+uri+" and tb_api_time.atDay = sub.atDay GROUP BY sub.atDay ORDER BY sub.atDay DESC LIMIT 0, 10) as A ORDER BY A.atDay ASC"
     return query
 
 def fetchList(uri, cursor):
