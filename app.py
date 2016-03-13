@@ -2,11 +2,12 @@
 from flask import Flask
 from flask import render_template
 import sqlite3
+import math
 
 app = Flask(__name__)
 
 def selectQuery(uri):
-    query = "SELECT sub.atDay as atDay, sub.a as avg, AVG((tb_api_time.elapsed - sub.a)*(tb_api_time.elapsed - sub.a)) as var from tb_api_time, (SELECT atDay, AVG(tb_api_time.elapsed) as a FROM tb_api_time WHERE uri="+uri+" GROUP BY atDay) as sub where tb_api_time.uri="+uri+" and tb_api_time.atDay = sub.atDay GROUP BY sub.atDay"
+    query = "SELECT sub.atDay as atDay, sub.a as avg, AVG((tb_api_time.elapsed - sub.a)*(tb_api_time.elapsed - sub.a)) as var from tb_api_time, (SELECT atDay, AVG(tb_api_time.elapsed) as a FROM tb_api_time WHERE uri="+uri+" GROUP BY atDay) as sub where tb_api_time.uri="+uri+" and tb_api_time.atDay = sub.atDay GROUP BY sub.atDay LIMIT 0, 10"
     return query
 
 def fetchList(uri, cursor):
@@ -16,14 +17,14 @@ def fetchList(uri, cursor):
     seriesDicAvg = {}
     seriesDicVar = {}
     seriesDicAvg['name'] = "Average(ms)"
-    seriesDicVar['name'] = "Variance(ms)"
+    seriesDicVar['name'] = "StandardVeriation(ms)"
     seriesDicAvg['data'] = list()
     seriesDicVar['data'] = list()
     cursor.execute(selectQuery(uri))
     for row in cursor:
         dayList.append(row[0])
         seriesDicAvg['data'].append(row[1])
-        seriesDicVar['data'].append(row[2])
+        seriesDicVar['data'].append(math.sqrt(row[2]))
     
     seriesList.append(seriesDicAvg)
     seriesList.append(seriesDicVar)

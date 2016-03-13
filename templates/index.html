@@ -50,11 +50,20 @@
             jsonApiQuestions = JSON.parse(document.getElementById('apiQuestionsDic').innerHTML),
             jsonApiQuestion = JSON.parse(document.getElementById('apiQuestionDic').innerHTML),
             jsonCreateQuestion = JSON.parse(document.getElementById('createQuestionDic').innerHTML);
+        var options = {
+            chart: {
+                width: 1000,
+                height: 400
+            },
+            series: {
+                spine: true
+            }
+        };
 
-        tui.chart.lineChart(chartHome, jsonHome);
-        tui.chart.lineChart(chartApiQuestions, jsonApiQuestions);
-        tui.chart.lineChart(chartApiQuestion, jsonApiQuestion);
-        tui.chart.lineChart(chartCreateQuestion, jsonCreateQuestion);
+        tui.chart.lineChart(chartHome, jsonHome, options);
+        tui.chart.lineChart(chartApiQuestions, jsonApiQuestions, options);
+        tui.chart.lineChart(chartApiQuestion, jsonApiQuestion, options);
+        tui.chart.lineChart(chartCreateQuestion, jsonCreateQuestion, options);
     </script>
 </body>
 </html>
